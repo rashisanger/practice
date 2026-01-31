@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin:0;
+            min-height:100vh;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(229, 224, 218);
+        }
+        .card{
+            width:280px;
+            padding:16px;
+            position:relative;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            border-radius: 14px;
+            background-color: white;
+        }
+        .badge{
+            position: absolute;
+            top:12px;
+            right:12px;
+            background-color: rgb(218, 7, 7);
+            border-radius: 6px;
+            color:white;
+            padding:4px 8px;
+            font-weight: bold;
+        }
+        .image{
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        .image img{
+            width: 160px;
+            height: auto;
+        }
+        .title{
+            font-size: 16px;
+            font-weight: bold;
+            margin: 6px 0;
+            color: rgb(41, 40, 40);
+        }
+        .desc{
+            font-size: 13px;
+            color: black;
+            margin-bottom: 12px;
+        }
+        .price{
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 14px;
+            color: black;
+        }
+        .buttons{
+            display: flex;
+            gap: 10px;
+            
+        }
+        .cart{
+            background-color: gray;
+            color: white;
+        }
+        .buy{
+            background-color: black;
+            color: white;
+        }
+        .btn{
+            flex: 1;
+            padding: 8px 0;
+            font-size: 13px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="badge">Sale</div>
+        <div class="image">
+            <img src="https://m.media-amazon.com/images/I/61RahTQtAqL._AC_UF1000,1000_QL80_.jpg" alt="wireless headphone">
+        </div>
+        <div class="title">Wireless Headphones</div>
+        <div class="desc">
+            High quality wireless headphones with noise cancellations.
+        </div>
+        <div class="price">₹2,999</div>
+
+        <div class="buttons">
+            <button class="btn cart">Add to Cart</button>
+            <button class="btn buy">Buy Now</button>
+        </div>
+    </div>
+</body>
+</html>

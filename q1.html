@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        const con=document.getElementById("container");
+
+        const ul=document.createElement("ul");
+        container.appendChild(ul);
+
+        const list=[
+            {name:"Rashi",age:21},{name:"Jonatahn",age:22},{name:"Divyansh",age:22}
+        ];
+
+        list.forEach((i,index)=>{
+            const li=document.createElement("li");
+            li.textContent=`${i.name}-${i.age}`;
+
+            const color=["lightBlue",'green','yellow'];
+            li.style.backgroundColor=color[index];
+            ul.appendChild(li);
+        });
+    </script>
+</body>
+</html>

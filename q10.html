@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin:0;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgb(87, 87, 87);
+        }
+        .profile-card{
+            background-color: lightblue;
+            border: 1px solid blue;
+            width:280px;
+            border-radius:10px;
+            text-align:center;
+            padding:20px;
+        }
+        .profile-card img{
+            width:80px;
+            height:120px;
+        }
+        .profile-card h2{
+            margin:10px 0;
+            font-size:1.2em;
+        }
+        .profile-card p{
+            font-size: 0.9em;
+            color:blueviolet;
+            margin-bottom: 15px;
+        }
+        .info{
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 15px;
+        }
+        .info div{
+            text-align: center;
+        }
+        .info h3{
+            margin:0;
+            font-size:1em;
+        }
+        .info span{
+            font-size:0.8em;
+            color:brown
+        }
+        .btn{
+            background-color: rgb(35, 115, 235);
+            color:white;
+            border:none;
+            padding:8px 16px;
+            cursor:pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-card">
+        <img src="https://img.freepik.com/free-photo/young-beautiful-girl-posing-black-leather-jacket-park_1153-8104.jpg?semt=ais_hybrid&w=740&q=80" alt="profile picture">
+        <h2>Jessica</h2>
+        <p>Web Developer | Tech Enthusiast | Team Player</p>
+
+        <div class="info">
+            <div>
+                <h3>120</h3>
+                <span>Posts</span>
+            </div>
+            <div>
+                <h3>430</h3>
+                <span>Followers</span>
+            </div>
+            <div>
+                <h3>187</h3>
+                <span>Following</span>
+            </div>
+        </div>
+
+        <button class="btn">Follow</button>
+    </div>
+</body>
+</html>
