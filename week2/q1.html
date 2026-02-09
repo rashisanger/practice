@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main{
+            box-shadow: 4px 4px 12px rgba(0,0,0,0.3);
+            padding: 25px;
+            text-align: center;
+            width:40%;
+            margin: auto;
+        }
+        button{
+            background-color: rgb(26, 121, 228);
+            color: white;
+            border: none;
+            padding:10px 20px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <h2>🐱Random Cat Fact</h2>
+        <p id="fact"></p>
+        <button id="btn">Get New Fact</button>
+    </div>
+    <script>
+        const p=document.getElementById("fact");
+        const button=document.getElementById("btn");
+        async function getFact(){
+            try{
+                const response=await fetch("https://catfact.ninja/fact");
+                const data=await response.json();
+                p.textContent=data.fact;
+            }catch(error){
+                console.log(error);
+            }
+        }
+        getFact();
+        button.addEventListener("click",getFact);
+    </script>
+</body>
+</html>

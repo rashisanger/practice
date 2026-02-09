@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main{
+            width:50%;
+            margin: auto;
+            text-align: center;
+            box-shadow: 10px 10px 12px rgba(0,0,0,0.3);
+            padding: 20px;
+        }
+        button {
+                background-color: rgb(26, 121, 228);
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 6px;
+        }
+        input {
+                padding: 10px;
+                width: 30%;
+                background-color: black;
+                color: white;
+                border-radius: 8px;
+        }
+        .repos {
+                background-color: #f4f4f4;
+                color: black;
+                padding: 20px;
+                border-radius: 10px;
+                margin-top: 15px;
+        }
+        .repos ul {
+                list-style-type: none;
+                padding: 0;
+        }
+        .repos li {
+                background-color: black;
+                color: white;
+                padding: 10px;
+                margin: 8px 0;
+                border-radius: 6px;
+        }
+        .repos a {
+                text-decoration: none;
+                color: rgb(26, 121, 228);
+        }
+        .profile {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                margin-top: 15px;
+                background-color: #f4f4f4;
+                padding: 15px;
+                border-radius: 10px;
+        }
+
+        .profile-img {
+                border-radius: 50%;
+                box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+                width: 100px;
+                height: 100px;
+        }
+
+        .profile-info {
+                text-align: left;
+        }
+
+        .profile-info p {
+                margin: 5px 0;
+        }
+        </style>
+</head>
+<body>
+    <div id="main">
+        <h2>Github Search</h2>
+        <input type="text" placeholder="Enter Github username" id="user">
+        <button id="btn">Search</button>
+        <div id="profile"></div>
+        <div id="repos"></div>
+    </div>
+    <script>
+        const search=document.getElementById("user");
+        const profile=document.getElementById("profile");
+        const repo=document.getElementById("repos");
+        async function searchUser(username){
+            try{
+                const response = await fetch(`https://api.github.com/users/${username}`);
+                if (!response.ok) {
+                    if (response.status == 404) {
+                        profile.innerHTML = `<p>User not found</p>`
+                        return;
+                    }
+                }
+                const user=await response.json();
+                profile.innerHTML = `
+                    <div class="profile">
+                        <img src="${user.avatar_url}" class="profile-img">
+                        <div class="profile-info">
+                            <p><strong>${user.login}</strong></p>
+                            <p>${user.bio ? user.bio : "No bio available"}</p>
+                            <p>Followers: ${user.followers}</p>
+                        </div>
+                    </div>`;
+                
+                const repoResponse=await fetch(`https://api.github.com/users/${username}/repos?sort=created&per_page=5`);
+                const r=await repoResponse.json();
+                
+                repo.innerHTML="<h3>Latest Repositories:</h3><ul>"+
+                    r.map(rep=>`<li><a href="${rep.html_url}" target="_blank">${rep.name}</a>`)+"</ul>";
+                repos.classList.add("repos");
+
+            }catch(error){
+                console.log(error);
+            }
+
+        }
+        btn.addEventListener("click",()=>{
+            const username=search.value.trim();
+            if(username){
+                searchUser(username);
+            }
+        });
+    </script>
+</body>
+</html>
